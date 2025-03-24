@@ -1,0 +1,17 @@
+ conda config --add channels conda-forge && conda config --set channel_priority strict
+
+https://hyun-ah-0@github.com/hyun-ah-0/SKN13_hyuna.git
+
+cd SKN13_hyuna/
+git add .
+git commit -m "첫번째 파일 올리기"
+git push origin main
+
+git 연동 순서
+- git pull
+- 변경 후
+ -git status : 빨간색 add 대상 -> 즉 추가/변경된 것 확인 용도
+ -git add 
+ -git commit -m "커밋메세지" (따옴표 생략 가능, 그러나 공백이 있으면 필요)
+# commit은 원칙적으로 하나의 작업이 끝났을 때만 하는 것 (중간에 하면 다른 사람이 pull을 받았을 때 갑자기 안 되는 상황...)
+ -git push 서버명 브랜치
