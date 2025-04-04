@@ -16,13 +16,13 @@ SELECT 기본 구문 - 연산자, 컬럼 별칭
 select *
 
 -- EMP 테이블의 직원 ID(emp_id), 직원 이름(emp_name), 업무(job) 컬럼의 값을 조회.
-select [emp_id,  emp_name, job]
+select emp_id,  emp_name, job
 
 -- EMP 테이블의 업무(job) 어떤 값들로 구성되었는지 조회. - 동일한 값은 하나씩만 조회되도록 처리.
-selct job distinct job
+selct distinct job
 
 -- EMP 테이블에서 emp_id는 직원ID, emp_name은 직원이름, hire_date는 입사일, salary는 급여, dept_name은 소속부서 별칭으로 조회결과를 출력 한다.
-select emp_id as 직원ID, emp_name as 직원이름, hire_date as 입사일, salary as 급여, dept_name as 소속부서  from EMP
+select emp_id as '직원ID', emp_name as '직원이름', hire_date as '입사일', salary as '급여', dept_name as '소속부서'  from EMP
 
 
 /* **************************************
@@ -70,13 +70,13 @@ select emp_id, emp_name, salary from EMP where salary > 10000
 select emp_id, emp_name, comm_pct from EMP where comm_pct between 0.2 and 0.3
 
 -- EMP 테이블에서 업무(job)가 'IT_PROG' 거나 'ST_MAN' 인 직원의  ID(emp_id), 이름(emp_name), 업무(job)을 조회.
-select emp_id, emp_name, job from EMP job not in ['IT_PROG', 'ST_MAN']
+select emp_id, emp_name, job from EMP job not in ('IT_PROG', 'ST_MAN')
 
 -- EMP 테이블에서 직원 이름(emp_name)이 S로 시작하는 직원의  ID(emp_id), 이름(emp_name)을 조회.
 select emp_id, emp_name from EMP where emp_name like 'S%'
 
 -- EMP 테이블에서 직원 이름(emp_name)의 세 번째 문자가 “e”인 모든 사원의 이름을 조회
-select emp_name from EMP where emp_name like '%%e'
+select emp_name from EMP where emp_name like '__e%'
 
 -- EMP 테이블에서 직원의 이름에 '%' 가 들어가는 직원의 ID(emp_id), 직원이름(emp_name) 조회
 --    %나 _ 를 검색하는 값으로 사용할 경우. 
@@ -124,10 +124,10 @@ select * from EMP where emp_name = 'Sales' and job = 'SA_MAN'
 
 -- EMP 테이블에서 업무(job)에 'MAN'이 들어가는 직원들 중에서 부서(dept_name)가 'Shipping' 이고 2005년이후 입사한 
 --           직원들의 ID(emp_id), 이름(emp_name), 업무(job), 입사일(hire_date),부서(dept_name)를 조회
-select emp_id, emp_name, job, hire_date, dept_name from EMP where job = '%MAN' AND dept_name = 'Shipping' and year(hire_date) = 2005
+select emp_id, emp_name, job, hire_date, dept_name from EMP where job = '%MAN%' AND dept_name = 'Shipping' and year(hire_date) >= 2005
 
 -- EMP 테이블에서 업무(job)에 'MAN'이 들어가는 직원들 중에서 'Marketing' 이나 'Sales' 부서에 소속된 직원들의 ID(emp_id), 이름(emp_name), 업무(job), 부서(dept_name)를 조회
-select emp_id, emp_name, job, dept_name from EMP where where job = '%MAN' AND (dept_name = ' Marketing' or dept_name = 'Sales')
+select emp_id, emp_name, job, dept_name from EMP where where job = '%MAN%' AND (dept_name = ' Marketing' or dept_name = 'Sales')
 
 
 /* *******************************************************************
